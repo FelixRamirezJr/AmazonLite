@@ -1,0 +1,38 @@
+.hero {
+  color: #fafafa;
+  padding-top: 190px;
+  background: linear-gradient(50deg, HSLA(205, 62%, 44%, 1), rgba(255, 153, 0, 1));
+  width: 100%;
+  }
+  .hero .hero-text {
+    padding-bottom: 50px; }
+  @media only screen and (max-width: 600px) {
+    .hero {
+      padding-top: 290px; } }
+  .hero .hero-img-col {
+    padding: 0;
+    margin-bottom: -6px;
+  }
+
+  .welcome-nav{
+    position: absolute;
+    width: 100%;
+    top: 15px;
+  }
+
+  .logo{
+    position: relative;
+    text-align: center;
+    font-size: 26px;
+    color: white;
+  }
+
+  .smile{
+    width: 100px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 40px;
+  }
