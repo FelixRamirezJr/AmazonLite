@@ -37,11 +37,13 @@ class Listing extends Component {
     return (
       <div className="row">
         <HeroLanding />
+        <div id="columns">
         {
              this.state.itemArray.map(function(item) {
                  return <ProductListing key={item.ASIN} item={item}  />
              })
-         }
+        }
+        </div>
       </div>
     );
   }
