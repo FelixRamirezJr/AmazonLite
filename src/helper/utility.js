@@ -1,3 +1,5 @@
+export var perPage = 10;
+
 /* Function returns the amazon credentails for the API
 *  Usually we would keep credentails in a secrets.js file
 */

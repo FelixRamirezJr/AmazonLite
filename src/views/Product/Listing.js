@@ -3,7 +3,7 @@ import {Switch,Route,Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ProductListing from '../../../src/components/ProductListing';
 import HeroLanding from '../../../src/components/HeroLanding';
-
+import Loading from '../../../src/components/Loading';
 var util = require('../../../src/helper/utility');
 
 
@@ -12,38 +12,49 @@ class Listing extends Component {
     super(props);
     this.state = {
       hello: "Hello World",
-      page: 1,
-      itemArray: []
+      itemArray: [],
+      numberOfPages: 5 // One page == 10 items. We need to get at least 50.
     };
+    this.populateGrid();
   }
 
-  componentDidMount(){
-    fetch('https://node-apac-get-wrapper.herokuapp.com/item_search' +
-      util.amazonSearch( this.state.page ),{
-      method: 'GET',
-      }).then((response) => response.json())
-      .then((responseJson) => {
-         //this.setState({ debugMessage: responseJson.ItemSearchResponse.toString() });
-         this.setState({ itemArray: responseJson.ItemSearchResponse.Items.Item });
-         return "okay";
-      })
-      .catch(function(error){
-      //this.setState({ debugMessage: "failed" });
-      throw error;
-    });
+  populateGrid(page){
+    for( var i = 1; i < this.state.numberOfPages + 1; i++ )
+    {
+      fetch('https://node-apac-get-wrapper.herokuapp.com/item_search' +
+        util.amazonSearch( i ),{
+        method: 'GET',
+        }).then((response) => response.json())
+        .then((responseJson) => {
+           var currArr = this.state.itemArray;
+           var productArr = responseJson.ItemSearchResponse.Items.Item;
+           for( var i = 0; i < productArr.length; i++ )
+           {
+             currArr.push( <ProductListing key={productArr[i].ASIN} item={productArr[i]} /> );
+           }
+           this.setState({ itemArray: currArr });
+           return "okay";
+        })
+        .catch(function(error){
+        throw error;
+      });
+    }
   }
 
   render() {
+    var productGrid = null;
+    if( this.state.itemArray.length < this.state.numberOfPages * util.perPage ){
+      productGrid = <Loading />;
+    } else {
+      productGrid = this.state.itemArray;
+    }
     return (
       <div className="row">
         <HeroLanding />
         <div id="columns">
-        {
-             this.state.itemArray.map(function(item) {
-                 return <ProductListing key={item.ASIN} item={item}  />
-             })
-        }
+          {productGrid}
         </div>
+
       </div>
     );
   }
