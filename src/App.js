@@ -1,3 +1,6 @@
+/* App.js in the main entry point of our single page react app.
+ * The application utilizes React-Router-Dom
+*/
 import React, { Component } from 'react';
 import './App.css';
 import './Product.css';

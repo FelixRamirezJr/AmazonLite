@@ -1,6 +1,9 @@
+/* Listing.js Page contains the grid view and calls the API request to
+* (node-apac-get-wrapper) to receive a list of Amazon Product Items.
+* The grid will be populated with ProductListing components(component/ProductListing).
+*/
 import React, { Component } from 'react';
 import {Switch,Route,Link} from 'react-router-dom';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import Loading from '../../../src/components/Loading';
 import ProductListing from '../../../src/components/ProductListing';
 var util = require('../../../src/helper/utility');
@@ -10,7 +13,6 @@ class Listing extends Component {
   constructor(props){
     super(props);
     this.state = {
-      hello: "Hello World",
       itemArray: [],
       numberOfPages: 6 // One page == 10 items. We need to get at least 50.
     };

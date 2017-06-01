@@ -1,3 +1,7 @@
+/* ProductListing.js Component takes in a amazon search index item and creates
+ * a Pintrest like box with the given item info. This component will be
+ * called from the Grid view(Pages/Listing.js).
+*/
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import Loading from './Loading';
@@ -33,7 +37,7 @@ class ProductListing extends Component {
       <div className="amazon-item z-depth-2">
         <img src={this.props.item.LargeImage.URL} onClick={this.goToItem}/>
         <div className="itemInfo">
-        <a href={this.state.redirectTo} className="title darker"> 
+        <a href={this.state.redirectTo} className="title darker">
           {this.props.item.ItemAttributes.Title}
         </a>
         <div className="price"> {price} </div>

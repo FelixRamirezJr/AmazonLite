@@ -1,3 +1,8 @@
+/* Show.js Page displays the info for the product that is found with the given
+ * ASIN parameter. The ASIN is passed in by the paramters, Product/:id. This page
+ * will then generate the Product Component(Component/Product) once it has successfully made
+ * the request
+*/
 import React, { Component } from 'react';
 import {Switch,Route,Link} from 'react-router-dom';
 import Product from '../../components/Product';
@@ -14,8 +19,10 @@ class Show extends Component {
       debug: ""
     };
   }
+  /* Load product from Amazon API using the ASIN ID. Product/:id */
   componentDidMount(){
-    this.setState({ debug: 'https://node-apac-get-wrapper.herokuapp.com/item_lookup' + util.getAmazonProduct( this.state.id )});
+    this.setState({ debug: 'https://node-apac-get-wrapper.herokuapp.com/item_lookup'
+                           + util.getAmazonProduct( this.state.id )});
     fetch('https://node-apac-get-wrapper.herokuapp.com/item_lookup' +
       util.getAmazonProduct( this.state.id ),{
       method: 'GET',

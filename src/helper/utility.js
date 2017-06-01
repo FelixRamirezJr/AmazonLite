@@ -1,7 +1,7 @@
-export var perPage = 10;
+export var perPage = 10; // Amazon API items per page CONSTANT.
 
 /* Function returns the amazon credentails for the API
-*  Usually we would keep credentails in a secrets.js file
+ *  Usually we would keep credentails in a secrets.js file
 */
 export function amazonCredentials(){
   var aws = {
@@ -12,7 +12,10 @@ export function amazonCredentials(){
   return aws;
 }
 
-/* Creates search parameters */
+/* Function that combines Amazon API Credentials and
+ * Query paramters to return for the GET URL for item_search
+ * Example Output: ?id=123&secret=321&assoc=321&SearchIndex=Book&Keywords=Harry....
+*/
 export function amazonSearch(page){
   var searchParams = {
     SearchIndex: "Books",
@@ -23,7 +26,9 @@ export function amazonSearch(page){
   return createParameters( Object.assign(amazonCredentials(), searchParams) );
 }
 
-/* Since Node.js does not support BODY parameters we need to build a string */
+/* Since Node.js does not support BODY parameters we need to build the
+ * paramters ourselves to include into the GET request URL.
+*/
 export function createParameters( aws ){
   var queryParameters = "";
   var counter = 0;
@@ -39,6 +44,10 @@ export function createParameters( aws ){
   return queryParameters;
 }
 
+/* Function that combines Amazon API Credentials and
+ * Query paramters to return for the GET URL for item_lookup
+ * Example Output: ?id=123&secret=321&assoc=321&IdType=ASIN&ItemId....
+*/
 export function getAmazonProduct(asin){
   var queryHash = {
     'ResponseGroup': "ItemAttributes,Offers,Images",
@@ -48,6 +57,10 @@ export function getAmazonProduct(asin){
   return createParameters( Object.assign(amazonCredentials(), queryHash) );
 }
 
+/* A function that takes the Amazon Image Sets and return an
+ * array of hashes. Each hash has a original and thumbnail picture
+ * A function like would be used for Gallery/Carousel for the pictures.
+*/
 export function getGalleryProductImages( imageSets ){
   var temp = [];
   var i = 0;

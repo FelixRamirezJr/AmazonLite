@@ -1,3 +1,8 @@
+/* SimpleGallery.js component is just a sample of what a real image carousel would
+ * look like. This component will only display the pictures in a carousel fashion
+ * but will not have all the functions as a real working carousel.
+ * COMPONENT SHOULD ONLY BE USED FOR DESIGNING MOCKUPS
+*/
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 

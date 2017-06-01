@@ -1,3 +1,6 @@
+/* Product.js component will require an amazon item. It will display the given
+ * items basic information that was given through the API.
+*/
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import Loading from './Loading';
