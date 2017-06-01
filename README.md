@@ -18,6 +18,6 @@ The library [node-apac](https://github.com/dmcquay/node-apac) is being used thro
 ## Problems and issues I found with the Amazon Product API.
 
 1. Too many requests made in a short interval of time will cause the Amazon API to return a failed response message. So implementing an Infinite Scroll feature would not be a good solution. A traditional pagination system would work well.
-Also, Clicking around really fast. Such as forcing a many requests per second will cause FAILED responses.
+Also, Clicking around really fast. Such as forcing many requests per second will cause FAILED responses.
 
 2. Amazon API is inconsistent as it returns empty values for certain products. Such as Price, Dimensions, EAN and etc. If you notice that some values say Not Available or are blank. This is because this value does not exist in the Amazon Database or API.
