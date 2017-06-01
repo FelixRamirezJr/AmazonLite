@@ -5,6 +5,8 @@
   width: 100%;
   text-align: center;
   font-family: fantasy;
+  cursor: pointer;
+  cursor: hand;
 }
 .hero .hero-text {
   padding-bottom: 50px;
@@ -91,11 +93,16 @@
 .itemInfo{
   padding: 5px 8px;
 }
+.darker{
+  color: #4a4a4a;
+}
+.lighter{
+  color: #6f6f6f;
+}
 
 .itemInfo .title{
   font-weight: bold;
   font-size: 1em;
-  color: #4a4a4a;
 }
 
 .itemInfo .price {
@@ -140,12 +147,19 @@
 .gallery{
   background-color: #d8d8d8;
   text-align: center;
-  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   padding-left: 50px;
   padding-right: 50px;
 }
 .gallery img{
   max-width: 100%;
+  margin-bottom: -6px;
+}
+
+.thumbnails{
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .thumbnail-list{
@@ -155,8 +169,31 @@
 .thumbnail-list li{
   margin-right: 10px;
   display: inline-block;
-  float: left;
 }
 .thumbnail-list img{
   max-width: 100%;
+}
+.product .left-container{
+  background-color: #fff;
+  padding: 0px;
+  border-radius: 8px;
+}
+.product .info {
+  padding: 20px;
+}
+.product .title{
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.product .author {
+  font-weight: 500;
+  font-size: 1rem;
+}
+.product .amazon-info{
+  padding: 20px;
+  border-top: 2px solid #d8d8d8;
+}
+
+.amazon-info .description{
+  margin-bottom: 10px;
 }

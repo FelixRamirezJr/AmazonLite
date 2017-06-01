@@ -33,7 +33,9 @@ class ProductListing extends Component {
       <div className="amazon-item z-depth-2">
         <img src={this.props.item.LargeImage.URL} onClick={this.goToItem}/>
         <div className="itemInfo">
-        <a href={this.state.redirectTo} className="title"> {this.props.item.ItemAttributes.Title} </a>
+        <a href={this.state.redirectTo} className="title darker"> 
+          {this.props.item.ItemAttributes.Title}
+        </a>
         <div className="price"> {price} </div>
         </div>
 
