@@ -38,3 +38,29 @@ export function createParameters( aws ){
   });
   return queryParameters;
 }
+
+export function getAmazonProduct(asin){
+  var queryHash = {
+    'ResponseGroup': "ItemAttributes,Offers,Images",
+    'IdType': "ASIN",
+    'ItemId': asin,
+  };
+  return createParameters( Object.assign(amazonCredentials(), queryHash) );
+}
+
+export function getGalleryProductImages( imageSets ){
+  var temp = [];
+  var i = 0;
+  for (var key in imageSets) {
+    if (imageSets.hasOwnProperty(key)) {
+      for(i = 0; i < imageSets[key].length; i++)
+      {
+        temp.push({
+            original: imageSets[key][i].LargeImage.URL,
+            thumbnail: imageSets[key][i].ThumbnailImage.URL
+          });
+      }
+    }
+  }
+  return temp;
+}

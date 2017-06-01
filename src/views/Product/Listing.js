@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Switch,Route,Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import HeroLanding from '../../../src/components/HeroLanding';
 import Loading from '../../../src/components/Loading';
 import ProductListing from '../../../src/components/ProductListing';
 var util = require('../../../src/helper/utility');
@@ -49,13 +48,9 @@ class Listing extends Component {
       productGrid = this.state.itemArray;
     }
     return (
-      <div className="row">
-        <HeroLanding />
         <div id="columns">
           {productGrid}
         </div>
-
-      </div>
     );
   }
 }

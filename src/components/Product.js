@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Loading from './Loading';
+import SimpleGallery from './SimpleGallery';
 
 var util = require('../helper/utility');
 
@@ -18,11 +19,19 @@ class Product extends Component {
   }
 
   render() {
-    if( !this.state.productSet ){
-      return <Loading />;
-    }
+
+    /* Set gallery images */
+    var images = util.getGalleryProductImages( this.props.item.ImageSets );
+
     return (
-      <div> Fun </div>
+      <div>
+        <div className="col s12 m7">
+          <SimpleGallery exampleImage={this.props.item.LargeImage.URL} images={images} />
+        </div>
+        <div className="col s6 push-s2">
+          
+        </div>
+      </div>
     );
   }
 }
