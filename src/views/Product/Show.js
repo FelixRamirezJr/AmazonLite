@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Switch,Route,Link} from 'react-router-dom';
+import Product from '../../components/Product';
 
 class Show extends Component {
   constructor(props){
@@ -12,6 +13,7 @@ class Show extends Component {
     return (
       <div>
         Show product for {this.state.id} skeleton
+        <Product id={this.state.id} />
       </div>
     );
   }

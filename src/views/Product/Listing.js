@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Switch,Route,Link} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import ProductListing from '../../../src/components/ProductListing';
 import HeroLanding from '../../../src/components/HeroLanding';
 import Loading from '../../../src/components/Loading';
+import ProductListing from '../../../src/components/ProductListing';
 var util = require('../../../src/helper/utility');
 
 
@@ -13,7 +13,7 @@ class Listing extends Component {
     this.state = {
       hello: "Hello World",
       itemArray: [],
-      numberOfPages: 5 // One page == 10 items. We need to get at least 50.
+      numberOfPages: 6 // One page == 10 items. We need to get at least 50.
     };
     this.populateGrid();
   }

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
+import Loading from './Loading';
 
 class ProductListing extends Component {
   constructor(props){
     super(props);
     this.state = {
       redirect: false,
-      asin: "",
-      largeImage: "",
-      listPrice: ""
+      redirectTo: "Product/" + this.props.item.ASIN
     };
     this.goToItem = this.goToItem.bind(this);
   }
@@ -18,19 +17,26 @@ class ProductListing extends Component {
 
   // Make sure no null values are passed in and crashes system
   componentWillReceiveProps(nextProps) {
-    if(nextProps.item.ItemAttributes.ListPrice != null){
+    if(nextProps.item.ItemAttributes.ListPrice.FormattedPrice != undefined ){
       this.setState({ listPrice: nextProps.item.ItemAttributes.ListPrice });
     }
   }
   render() {
     if( this.state.redirect ){
-      var redirectTo = "Product/" + this.props.item.ASIN;
-      return <Redirect push to={redirectTo}/>
+      return <Redirect push to={this.state.redirectTo}/>
+    }
+    var price = "Not available";
+    if( this.props.item.ItemAttributes.ListPrice != undefined ) {
+      price = this.props.item.ItemAttributes.ListPrice.FormattedPrice;
     }
     return (
-      <div className="amazon-item z-depth-2" onClick={this.goToItem}>
-        <img src={this.props.item.LargeImage.URL}/>
-        <p>  for {this.state.listPrice} </p>
+      <div className="amazon-item z-depth-2">
+        <img src={this.props.item.LargeImage.URL} onClick={this.goToItem}/>
+        <div className="itemInfo">
+        <a href={this.state.redirectTo} className="title"> {this.props.item.ItemAttributes.Title} </a>
+        <div className="price"> {price} </div>
+        </div>
+
       </div>
     );
   }
